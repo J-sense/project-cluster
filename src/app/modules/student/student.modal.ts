@@ -143,4 +143,8 @@ studentSchema.pre('save', async function (next) {
   );
   next();
 });
+studentSchema.post('save', function (doc, next) {
+  doc.password = '';
+  next();
+});
 export const StudentModel = model<Student>('User', studentSchema);
